@@ -1,19 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-import LocalStorage from './components/LocalStorage';
+// import "./App.css";
+// import TodoList from "./components/ToDo/TodoList";
+// function App() {
+ 
+//   return (
+//     <div className="App">
+//      <TodoList />
+//     </div>
+//   );
+// }
 
+// export default App;
+import React from 'react';
+import './App.css';
+import Home from './components/Home';
+import About from './components/About';
+import LanguageSelector from './components/LanguageSelectors';
+import { useTranslation } from 'react-i18next';
 
 function App() {
-  const [name, setName] = LocalStorage('name', 'John')
-  const handleChange = (event) =>{
-    setName(event.target.value)
-  }
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="App">
-      <p>{name}</p>     
-      <input type="text" value={name} onChange={handleChange} />
+      <LanguageSelector />
+      <h1>{t('greeting')}</h1>
+      <Home />
+      <About />
     </div>
   );
 }
 
 export default App;
+
